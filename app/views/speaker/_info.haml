@@ -1,0 +1,3 @@
+.post
+  .title= link_to speaker.title, url_for(:speakers, :show, :id => post)
+  .body= simple_format(speaker.bio)

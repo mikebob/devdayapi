@@ -1,0 +1,29 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:speakers, :index)
+      %li=link_to pat(:new), url(:speakers, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:speakers)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:speaker, :bio)
+          %th=mat(:speaker, :company)
+          %th=mat(:speaker, :name)
+          %th.last="&nbsp;"
+        -@speakers.each do |speaker|
+          %tr
+            %td.first=speaker.bio
+            %td=speaker.company
+            %td=speaker.name
+            %td.last
+              =button_to pat(:edit), url(:speakers, :edit, :id => speaker.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:speakers, :destroy, :id => speaker.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+

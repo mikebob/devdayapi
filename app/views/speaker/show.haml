@@ -1,0 +1,7 @@
+- @title = @speaker.title
+#show
+  .post
+    .title= @speaker.name
+    # .date= time_ago_in_words(@post.created_at || Time.now) + ' ago'
+    .body= simple_format(@speaker.bio)    
+%p= link_to 'View all speakers', url_for(:speakers, :index)

@@ -14,9 +14,13 @@ Devdayapi.controllers  do
   #   "Maps to url '/foo/#{params[:id]}'"
   # end
 
-  # get "/example" do
-  #   "Hello world!"
-  # end
+  get '/' do
+     "Hello world!"
+  end
 
+  get '/speak' do
+    # Speaker.include_root_in_json = true
+    Speaker.all.to_json
+  end
   
 end

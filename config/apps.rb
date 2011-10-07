@@ -31,6 +31,5 @@ Padrino.configure_apps do
 end
 
 # Mounts the core application for this project
-Padrino.mount("Devdayapi").to('/')
-
+Padrino.mount("Devdayapi").to('/api')
 Padrino.mount("Admin").to("/admin")

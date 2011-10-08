@@ -18,6 +18,11 @@ Devdayapi.controllers  do
      "Hello world!"
   end
 
+  before do
+    response['Access-Control-Allow-Origin'] = '*'
+    content_type :json
+  end
+
   get '/speak' do
     # Speaker.include_root_in_json = true
     Speaker.all.to_json

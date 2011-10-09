@@ -26,6 +26,11 @@
     =f.text_area :description, :class => :text_area
 
   .group
+    %label Photo URL:
+    =f.error_message_on :photo_url
+    =f.text_field :photo_url, :class => :text_field
+
+  .group
     =f.label :time_slot
     =f.error_message_on :time_slot
     =f.radio_button :time_slot, :value => '1'

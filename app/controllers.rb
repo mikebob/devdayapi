@@ -23,6 +23,9 @@ Devdayapi.controllers  do
     content_type :json
   end
 
+  # Example json
+  # http://search.twitter.com/search.json?q=blue%20angels&rpp=5&include_entities=true&with_twitter_user_id=true&result_type=mixed
+
   get '/speak' do
     # Speaker.include_root_in_json = true
     Speaker.all.to_json

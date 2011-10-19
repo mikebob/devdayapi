@@ -10,15 +10,15 @@
     .inner
       %table.table
         %tr
-          %th.first=mat(:speaker, :bio)
-          %th=mat(:speaker, :company)
+          %th.first=mat(:speaker, :photo_url)
           %th=mat(:speaker, :name)
+          %th=mat(:speaker, :company)
           %th.last="&nbsp;"
         -@speakers.each do |speaker|
           %tr
-            %td.first=speaker.bio
-            %td=speaker.company
+            %td.first=image_tag(speaker.photo_url, :width => '50')
             %td=speaker.name
+            %td=speaker.company
             %td.last
               =button_to pat(:edit), url(:speakers, :edit, :id => speaker.id), :method => :get, :class => :button_to
               ="|"

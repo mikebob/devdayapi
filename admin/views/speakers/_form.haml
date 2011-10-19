@@ -2,7 +2,7 @@
   =f.label :name
   =f.error_message_on :name
   =f.text_field :name, :class => :text_field
-  %span.description Ex: a simple text
+  /%span.description Ex: a simple text
 
 .group
   =f.label :bio
@@ -33,17 +33,10 @@
   .group
     =f.label :time_slot
     =f.error_message_on :time_slot
-    =f.radio_button :time_slot, :value => '1'
-    %span one
-    =f.radio_button :time_slot, :value => '2'
-    %span two
-    =f.radio_button :time_slot, :value => '3'
-    %span three
-
-  .group
-    =f.label :room
-    =f.error_message_on :room
-    = select_tag :room, :options => ['room1', 'room2'], :selected => 'room1'
+    =f.select :time_slot, :options => @slots, :selected => @selected_slot
+    /=select_tag :time_slot, :options => [['label', '1'], ['label2', '2']], :selected => :time_s
+    %span in
+    =f.select :room, :options => @rooms, :selected => @selected_room
 
 .group.navform.wat-cf
   =f.submit pat(:save), :class => :button

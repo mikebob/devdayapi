@@ -7,6 +7,17 @@ Admin.controllers :speakers do
 
   get :new do
     @speaker = Speaker.new
+  
+    @slots = []
+    TimeSlot.all(:order=>:datetime.asc).each do |i|
+      @slots.push(["#{i._id} #{i.datetime.strftime('%a @ %I:%M%p')}", i._id])
+    end
+
+    @rooms = []
+    Room.all(:order=>:name.asc).each do |i|
+      @rooms.push([i.name, i._id])
+    end
+
     render 'speakers/new'
   end
 
@@ -28,6 +39,21 @@ Admin.controllers :speakers do
 
   get :edit, :with => :id do
     @speaker = Speaker.find(params[:id])
+
+    @slots = []
+    TimeSlot.all(:order=>:datetime.asc).each do |i|
+      @slots.push(["#{i._id} #{i.datetime.strftime('%a @ %I:%M%p')}", i._id])
+    end
+
+    @rooms = []
+    Room.all(:order=>:name.asc).each do |i|
+      @rooms.push([i.name, i._id])
+    end
+    
+    @selected_slot = @speaker.time_slot
+    @selected_room = @speaker.room
+    logger.warn @selected_slot
+
     render 'speakers/edit'
   end
 

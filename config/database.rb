@@ -2,7 +2,7 @@
 		MongoMapper.connection = Mongo::Connection.new('staff.mongohq.com',10034, :logger => logger)
 		MongoMapper.database = 'onedevdaytogo'
 		MongoMapper.database.authenticate('master','redvsblue22')				
-		#MongoMapper.database.authenticate('dbuser','doworkson')		
+		# MongoMapper.database.authenticate('dbuser','doworkson') #readonly user
 
 # case Padrino.env
 #   when :development then 

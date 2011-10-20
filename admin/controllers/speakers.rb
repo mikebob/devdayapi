@@ -22,12 +22,23 @@ Admin.controllers :speakers do
   end
 
   post :create do
-    #logger.warn params
 
     @speaker = Speaker.new(params[:speaker])
-    @session = Speaker.new(params[:session])
+    @session = Session.new(params[:session])
+
+    logger.warn params
+
+  # logger.warn @session.title
+  # logger.warn params[:room]
+
+
+    # @room = Room.find({_id:})
+    # @time = TimeSlot.find()
 
     @speaker.sessions.build(session);
+
+    logger.warn @session.room
+
         
     if @speaker.save
       flash[:notice] = 'Speaker was successfully created.'
@@ -59,7 +70,11 @@ Admin.controllers :speakers do
 
   put :update, :with => :id do
     @speaker = Speaker.find(params[:id])
-    if @speaker.update_attributes(params[:speaker])
+
+    submission_hash = params[:speaker]
+    submission_hash.merge!(params[:session])
+
+    if @speaker.update_attributes(submission_hash)
       flash[:notice] = 'Speaker was successfully updated.'
       redirect url(:speakers, :edit, :id => @speaker.id)
     else

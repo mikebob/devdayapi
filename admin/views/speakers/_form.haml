@@ -14,29 +14,29 @@
   =f.error_message_on :company
   =f.text_field :company, :class => :text_field
 
-- fields_for :session do |location|
+- fields_for :session do |sess|
   .group
     %label Session Title:
-    =f.error_message_on :title
-    =f.text_field :title, :class => :text_field
+    =sess.error_message_on :title
+    =sess.text_field :title, :class => :text_field
   
   .group
     %label Session Description:
-    =f.error_message_on :description
-    =f.text_area :description, :class => :text_area
+    =sess.error_message_on :description
+    =sess.text_area :description, :class => :text_area
 
   .group
     %label Photo URL:
-    =f.error_message_on :photo_url
-    =f.text_field :photo_url, :class => :text_field
+    =sess.error_message_on :photo_url
+    =sess.text_field :photo_url, :class => :text_field
 
   .group
-    =f.label :time_slot
-    =f.error_message_on :time_slot
-    =f.select :time_slot, :options => @slots, :selected => @selected_slot
+    =sess.label :time_slot
+    =sess.error_message_on :time_slot
+    =sess.select :time_slot, :options => @slots, :selected => @selected_slot
     /=select_tag :time_slot, :options => [['label', '1'], ['label2', '2']], :selected => :time_s
     %span in
-    =f.select :room, :options => @rooms, :selected => @selected_room
+    =sess.select :room, :options => @rooms, :selected => @selected_room
 
 .group.navform.wat-cf
   =f.submit pat(:save), :class => :button

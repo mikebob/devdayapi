@@ -28,7 +28,20 @@ Devdayapi.controllers  do
 
   get '/speak' do
     # Speaker.include_root_in_json = true
-    Speaker.all.to_json
+    # @spk = Speaker.all.to_json
+
+    @spk = Speaker.all
+
+    @spk.each do |i|
+      logger.warn i.room.name
+      # i['room_name'] = i.room.name
+    end
+
+    # @spk['roomname']
+    @spk.to_json
+
+    # @doc = [['name', 'mike'], ['last', 'joe']]
+    # @doc.to_json
   end
   
 end
